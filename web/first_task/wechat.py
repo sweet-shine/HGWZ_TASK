@@ -11,7 +11,7 @@ options.debugger_address = '127.0.0.1:9222'
 driver = webdriver.Chrome(options=options)
 
 # 新建shelve文件，并保存复用浏览器的cookies
-f = shelve.open('datas/cookies')
+f = shelve.open('first_task/datas/cookies')
 f['cookies'] = driver.get_cookies()
 # 打印一下保存的cookies
 print(f['cookies'])
