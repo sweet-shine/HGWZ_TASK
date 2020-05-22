@@ -12,8 +12,8 @@ class ContractsPage:
         self._driver = driver
 
     def add_member(self):
-        sleep(1)
-        self._driver.find_element(By.CLASS_NAME, 'js_add_member').click()
+        sleep(2)
+        self._driver.find_element(By.CSS_SELECTOR, '.ww_operationBar .js_add_member').click()
         sleep(2)
         self._driver.find_element(By.ID, 'username').send_keys('aaa')
         self._driver.find_element(By.ID, 'memberAdd_acctid').send_keys('aaa')
