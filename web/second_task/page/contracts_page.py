@@ -4,26 +4,28 @@
 from time import sleep
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
+from web.second_task.page.base_page import BasePage
 
-class ContractsPage:
-    def __init__(self, driver: WebDriver):
-        self._driver = driver
+
+class ContractsPage(BasePage):
 
     def add_member(self):
-        # add_member_locator = (By.CSS_SELECTOR, '.ww_operationBar .js_add_member')
-        ele = WebDriverWait(self._driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '.ww_operationBar .js_add_member')))
+        add_member_locator = (By.CSS_SELECTOR, '.ww_operationBar .js_add_member')
+        ele = WebDriverWait(self._driver, 5).until(EC.element_to_be_clickable(add_member_locator))
         print(ele)
+        print(type(ele))
         # print(*add_member_locator)
-        self._driver.find_element(By.CSS_SELECTOR, '.ww_operationBar .js_add_member').click()
+        # sleep(2)
+        self._driver.find_element(*add_member_locator).click()
+        # ele.click()
         sleep(2)
         self._driver.find_element(By.ID, 'username').send_keys('aaa')
         self._driver.find_element(By.ID, 'memberAdd_acctid').send_keys('aaa')
         self._driver.find_element(By.ID, 'memberAdd_phone').send_keys('11111111111')
-        self._driver.find_element(By.CLASS_NAME, 'js_btn_save').send_keys('11111111111')
+        self._driver.find_element(By.CLASS_NAME, 'js_btn_save').click()
 
     def get_member_names(self):
         sleep(2)

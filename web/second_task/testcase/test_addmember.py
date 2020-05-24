@@ -1,13 +1,13 @@
 # coding=utf-8
 # auther:wangc
 # 2020-05-19
-from web.second_task.page.home_page import HomePage
+from web.second_task.page.main_page import MainPage
 
 
 class Test_Add_Member:
 
     def setup(self):
-        self.home = HomePage()
+        self.home = MainPage()
 
     def test_addmember(self):
         self.contracts = self.home.goto_contracts()
