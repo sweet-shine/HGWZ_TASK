@@ -10,7 +10,8 @@ class AddMemberPage(BasePage):
 
     def add_manully(self, name, sex='男', phone_num=''):
         # 点击手动添加按钮
-        self.find_ele(MobileBy.ID, 'com.tencent.wework:id/c7t').click()
+        # com.tencent.wework:id/c7t
+        self.find_ele(MobileBy.ID, 'com.tencent.wework:id/c7x').click()
 
         #输入姓名
         self.find_ele(MobileBy.XPATH, "//*[@resource-id='com.tencent.wework:id/dw2']//android.widget.EditText").send_keys(name)

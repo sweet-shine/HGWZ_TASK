@@ -13,5 +13,5 @@ class Test_Add_Manully:
         self.main.quit_app()
 
     def test_add_manully(self):
-        self.main.goto_contracts().goto_addmember().add_manully('aaa', '女', 11111111117)
+        self.main.goto_contracts().goto_addmember().add_manully('aaa', '女', 11111111118)
         assert self.main.get_toast('添加成功')

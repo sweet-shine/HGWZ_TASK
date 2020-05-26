@@ -16,10 +16,12 @@ class BasePage:
         else:
             caps = {}
             caps["platformName"] = "Android"
+            #2d3be0a5
+            #127.0.0.1:7555
             caps["deviceName"] = "127.0.0.1:7555"
             caps["appPackage"] = "com.tencent.wework"
             caps["appActivity"] = ".launch.LaunchSplashActivity"
-            caps['noReset'] = "true"
+            caps['noReset'] = True
             caps['skipServerInstallation'] = True
             caps['skipDeviceInitialization'] = True
 

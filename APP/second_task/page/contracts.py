@@ -11,5 +11,6 @@ class ContractsPage(BasePage):
 
     def goto_addmember(self):
 
-        self.find_ele(MobileBy.XPATH, "//*[@resource-id='com.tencent.wework:id/drn'][last()]").click()
+        # //*[@resource-id='com.tencent.wework:id/drn'][last()]
+        self.find_ele(MobileBy.XPATH, "//*[@resource-id='com.tencent.wework:id/drw'][last()]").click()
         return AddMemberPage(self._driver)
