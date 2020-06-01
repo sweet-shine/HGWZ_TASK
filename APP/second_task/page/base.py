@@ -57,6 +57,3 @@ class BasePage:
         WebDriverWait(self._driver, 6, 0.3).until(
             expected_conditions.presence_of_element_located((MobileBy.XPATH, toast_loc)))
         return True
-
-    def quit_app(self):
-        self._driver.quit()

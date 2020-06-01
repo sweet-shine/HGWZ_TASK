@@ -28,7 +28,7 @@ class APP(BasePage):
         return self
 
     def stop_app(self):
-        pass
+        self._driver.quit()
 
     def restart_app(self):
         pass
