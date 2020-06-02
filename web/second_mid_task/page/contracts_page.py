@@ -18,7 +18,7 @@ class ContractsPage:
         self._driver.find_element(By.ID, 'username').send_keys('aaa')
         self._driver.find_element(By.ID, 'memberAdd_acctid').send_keys('aaa')
         self._driver.find_element(By.ID, 'memberAdd_phone').send_keys('11111111111')
-        self._driver.find_element(By.CLASS_NAME, 'js_btn_save').send_keys('11111111111')
+        self._driver.find_element(By.CLASS_NAME, 'js_btn_save').click()
 
     def get_member_names(self):
         sleep(2)

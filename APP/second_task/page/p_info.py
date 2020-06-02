@@ -11,7 +11,10 @@ class PInfoPage(BasePage):
 
     def goto_info(self):
         # 点击右上角三个点的按钮
-        self.find_ele()
+        self.find_ele(MobileBy.ID, 'com.tencent.wework:id/gvr').click()
         #点击编辑成员按钮
         self.find_ele(MobileBy.ID,'com.tencent.wework:id/azn').click()
-        self.find_ele()
+        #点击删除成员按钮
+        self.find_ele(MobileBy.ID,'com.tencent.wework:id/dvn').click()
+        #点击确定按钮
+        self.find_ele(MobileBy.ID, 'com.tencent.wework:id/b_d').click()

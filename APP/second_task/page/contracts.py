@@ -17,3 +17,8 @@ class ContractsPage(BasePage):
     def goto_pinfo(self, name):
         self.find_ele(MobileBy.XPATH, f"//*[@resource-id='com.tencent.wework:id/b0_']//*[@text={name}]").click()
         return PInfoPage(self._driver)
+
+    def get_members_num(self):
+        members = self.find_eles('//android.widget.ListView/android.widget.RelativeLayout')
+        num = len(members)-2
+        return num

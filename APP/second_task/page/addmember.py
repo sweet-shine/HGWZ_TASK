@@ -26,14 +26,16 @@ class AddMemberPage(BasePage):
         #保存
         self.find_ele(MobileBy.ID, 'com.tencent.wework:id/gvy').click()
 
-    def get_toast(self, toast_text=''):
+        return self
 
-        if toast_text:
-            toast_loc = (MobileBy.XPATH, f"//*[contains(@text,'{toast_text}')]")
-        else:
-            toast_loc = (MobileBy.XPATH, f"//android.widget.Toast")
-        b = self.find_ele(*toast_loc).text
-        # WebDriverWait(self._driver, 5, 0.1).until(
-        #      expected_conditions.presence_of_element_located(toast_loc))
-
-        return b
+    # def get_toast(self, toast_text=''):
+    #
+    #     if toast_text:
+    #         toast_loc = (MobileBy.XPATH, f"//*[contains(@text,'{toast_text}')]")
+    #     else:
+    #         toast_loc = (MobileBy.XPATH, f"//android.widget.Toast")
+    #     b = self.find_ele(toast_loc).text
+    #     # WebDriverWait(self._driver, 5, 0.1).until(
+    #     #      expected_conditions.presence_of_element_located(toast_loc))
+    #
+    #     return b
