@@ -47,13 +47,14 @@ class BasePage:
     def find_eles(self, by, locator):
         return self._driver.find_elements(by, locator)
 
-    def get_toast(self, toast_text=''):
-
-        if toast_text:
-            toast_loc = self._driver.find_elements(MobileBy.XPATH, f"//*[contains(@text,'{toast_text}')]")
-        else:
-            toast_loc = self._driver.find_elements(MobileBy.XPATH, f"//android.widget.Toast")
-
-        WebDriverWait(self._driver, 6, 0.3).until(
-            expected_conditions.presence_of_element_located((MobileBy.XPATH, toast_loc)))
-        return True
+    # def get_toast(self, toast_text=''):
+    #
+    #     if toast_text:
+    #         toast_loc = (MobileBy.XPATH, f"//*[contains(@text,'{toast_text}')]")
+    #     else:
+    #         toast_loc = (MobileBy.XPATH, f"//android.widget.Toast")
+    #     b = self.find_ele(*toast_loc).text
+    #    # WebDriverWait(self._driver, 5, 0.1).until(
+    #    #      expected_conditions.presence_of_element_located(toast_loc))
+    #
+    #     return b
