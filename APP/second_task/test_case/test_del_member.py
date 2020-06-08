@@ -1,15 +1,21 @@
+import pytest
+import yaml
 
 from APP.second_task.page.app import APP
 
 
 class Test_Del_Mem:
 
-    def setup_class(self):
+    def setup(self):
         self.app = APP().start_app()
 
-    def teardown_class(self):
+    def teardown(self):
         self.app.stop_app()
 
-    def test_del_member(self):
-        num = self.app.goto_main().goto_contracts().get_members_num()
-        print(num)
+    @pytest.mark.parametrize("name", yaml.safe_load(open('../data/mem_data.yml', encoding='utf-8'))['del_data'])
+    def test_del_member(self, name):
+        self.contract = self.app.goto_main().goto_contracts()
+        pre_num = self.contract.get_members_num()
+        del_res = self.contract.goto_delmember().del_member(name)
+        after_num = self.contract.get_members_num()
+        assert pre_num - after_num == 1
