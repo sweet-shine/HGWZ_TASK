@@ -18,6 +18,7 @@ class APP(BasePage):
             caps["deviceName"] = "127.0.0.1:7555"
             caps["appPackage"] = "com.tencent.wework"
             caps["appActivity"] = ".launch.LaunchSplashActivity"
+            caps["automationName"] = "uiautomator2"
             caps['noReset'] = "true"
             caps['skipServerInstallation'] = True
             caps['skipDeviceInitialization'] = True

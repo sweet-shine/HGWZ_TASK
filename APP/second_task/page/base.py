@@ -30,6 +30,7 @@ class BasePage:
 
         # 如果未找到元素，则看看是否有需要处理的弹框
         except Exception as e:
+            print(f'第{self._error_times}次没找到元素')
             # 每次找不到，错误次数就+1
             self._error_times += 1
             # 如果错误次数>最大重试次数，抛出异常
@@ -38,7 +39,8 @@ class BasePage:
             # 如果错误次数不够，则处理弹框
             self._driver.implicitly_wait(1)
             for _black_ele in self._black_list:
-                eles = self._driver.find_elements(MobileBy.XPATH, f"//*[contains(@text,{_black_ele})]")
+                print(f'查找名称包含{_black_ele}的弹窗')
+                eles = self._driver.find_elements(MobileBy.XPATH, f"//*[contains(@text,'{_black_ele}')]")
                 if len(eles) > 0:
                     eles[0].click()
                     return self.find_ele(locator, value)
@@ -47,6 +49,18 @@ class BasePage:
     def find_eles(self, by, locator):
         return self._driver.find_elements(by, locator)
 
+    def scroll_find(self, value):
+        return self._driver.find_element_by_android_uiautomator(
+            'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(' + '"' + value + '"' + ').instance(0));')
+
+    def scroll_find_start_text(self, value):
+        return self._driver.find_element_by_android_uiautomator(
+            f'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textStartsWith("{value}").instance(0));')
+
+    def go_back(self):
+        self._driver.back()
+        return self
+
     def get_toast(self, toast_text=''):
 
         if toast_text:
@@ -54,7 +68,5 @@ class BasePage:
         else:
             toast_loc = (MobileBy.XPATH, f"//android.widget.Toast")
         # b = self.find_ele(toast_loc).text
-        WebDriverWait(self._driver, 5, 0.1).until(
-             expected_conditions.presence_of_element_located(toast_loc))
-        b = self.find_ele(toast_loc).text
-        return b
+        toast_frame = WebDriverWait(self._driver, 5, 0.01).until(lambda x: self._driver.find_element(*toast_loc))
+        return toast_frame.text

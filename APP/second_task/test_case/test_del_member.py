@@ -16,6 +16,8 @@ class Test_Del_Mem:
     def test_del_member(self, name):
         self.contract = self.app.goto_main().goto_contracts()
         pre_num = self.contract.get_members_num()
+        print(pre_num)
         del_res = self.contract.goto_delmember().del_member(name)
         after_num = self.contract.get_members_num()
+        print(after_num)
         assert pre_num - after_num == 1
