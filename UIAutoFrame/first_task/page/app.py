@@ -3,8 +3,8 @@
 # 2020-06-01
 from appium import webdriver
 
-from APP.second_task.page.base import BasePage
-from APP.second_task.page.main import MainPage
+from UIAutoFrame.first_task.page.base import BasePage
+from UIAutoFrame.first_task.page.main import Main_Page
 
 
 class APP(BasePage):
@@ -34,5 +34,5 @@ class APP(BasePage):
     def restart_app(self):
         pass
 
-    def goto_main(self) -> MainPage:
-        return MainPage(self._driver)
+    def goto_main(self) -> Main_Page:
+        return Main_Page(self._driver)
