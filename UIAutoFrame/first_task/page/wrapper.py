@@ -9,7 +9,14 @@ from appium.webdriver.common.mobileby import MobileBy
 def handle_alert(func):
     def wrapper(*args, **kwargs):
         from UIAutoFrame.first_task.page.base import BasePage
-        _black_list = ['确定', '确认', '取消', '是', '下次再说']
+        _black_list = [
+                       # (MobileBy.XPATH, '//android.widget.ImageButton'),
+                       (MobileBy.XPATH, "//*[@text='取消']"),
+                       (MobileBy.XPATH, '确定'),
+                       (MobileBy.XPATH, '确认'),
+                       (MobileBy.XPATH, "//*[@text='是']"),
+                       (MobileBy.XPATH, "//*[@text='下次再说']")
+        ]
         _error_num = 0
         _max_retry = 3
 
@@ -17,6 +24,7 @@ def handle_alert(func):
 
         try:
             element = func(*args, **kwargs)
+            _error_num = 0
             instance._driver.implicitly_wait(5)
             return element
         # 如果未找到元素，则看看是否有需要处理的弹框
@@ -31,7 +39,7 @@ def handle_alert(func):
             instance._driver.implicitly_wait(1)
             for _black_ele in _black_list:
                 print(f'查找名称包含{_black_ele}的弹窗')
-                eles = instance._driver.find_elements(MobileBy.XPATH, f"//*[contains(@text,'{_black_ele}')]")
+                eles = instance._driver.find_elements(*_black_ele)
                 if len(eles) > 0:
                     eles[0].click()
                     return wrapper(*args, **kwargs)

@@ -10,5 +10,5 @@ from UIAutoFrame.first_task.page.search import Search_Page
 class Market_Page(BasePage):
 
     def goto_search(self):
-        # self.find_ele(MobileBy.ID, 'com.xueqiu.android:id/action_search').click()
+        self.find_ele(MobileBy.ID, 'com.xueqiu.android:id/action_search').click()
         return Search_Page(self._driver)
