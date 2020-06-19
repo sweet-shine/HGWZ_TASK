@@ -1,0 +1,3 @@
+- by: xpath
+  locator: //android.widget.TabHost//*[@text='行情']
+  action: click
