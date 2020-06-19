@@ -11,11 +11,12 @@ class APP(BasePage):
         else:
             caps = {}
             caps["platformName"] = "Android"
+            # caps["platformVersion"] = 10
             caps["deviceName"] = "127.0.0.1:7555"
             caps["appPackage"] = "com.xueqiu.android"
             caps["appActivity"] = ".view.WelcomeActivityAlias"
             caps["automationName"] = "uiautomator2"
-            caps['noReset'] = "true"
+            caps['noReset'] = True
             caps['skipServerInstallation'] = True
             caps['skipDeviceInitialization'] = True
             self._driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)

@@ -1,0 +1,25 @@
+search:
+  - "by": id
+    "locator": com.xueqiu.android:id/search_input_text
+    "action": send_keys
+    "value": 阿里巴巴
+
+  - "by": xpath
+    "locator": //androidx.recyclerview.widget.RecyclerView//*[@text='阿里巴巴']
+    "action": click
+
+add:
+  - "by": "xpath"
+    "locator": "//*[contains(@resource-id,'ll_stock_item_container')]//*[@text='阿里巴巴']/../..//*[@text='加自选']"
+    "action": "click"
+
+is_choose:
+  - "bys": "xpath"
+    "locator": "//*[contains(@resource-id,'ll_stock_item_container')]//*[@text='阿里巴巴']/../..//*[@text='已添加']"
+    "action": "len"
+
+reset:
+  - "bys": "xpath"
+    "locator": "//*[contains(@resource-id,'ll_stock_item_container')]//*[@text='阿里巴巴']/../..//*[@text='已添加']"
+    "index": 0
+    "action": "click"

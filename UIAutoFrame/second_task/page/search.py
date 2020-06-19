@@ -5,9 +5,10 @@ from UIAutoFrame.second_task.page.base import BasePage
 
 
 class Search_Page(BasePage):
-    def search(self):
-        with open('../page/search1.yaml', encoding='utf-8') as f:
-            steps = yaml.safe_load(f)
+    # 搜索指定内容
+    def search(self, func_name):
+        with open('../page/search.yaml', encoding='utf-8') as f:
+            steps = yaml.safe_load(f)[func_name]
             for step in steps:
                 if "by" in step.keys():
                     element = self.find_ele(step["by"], step["locator"])
@@ -25,9 +26,10 @@ class Search_Page(BasePage):
                         return len(elements)
         return self
 
-    def add(self):
-        with open('../page/search2.yaml', encoding='utf-8') as f:
-            steps = yaml.safe_load(f)
+    # 点击加自选
+    def add(self, func_name):
+        with open('../page/search.yaml', encoding='utf-8') as f:
+            steps = yaml.safe_load(f)[func_name]
             for step in steps:
                 if "by" in step.keys():
                     element = self.find_ele(step["by"], step["locator"])
@@ -45,9 +47,10 @@ class Search_Page(BasePage):
                         return len(elements)
         return self
 
-    def is_choose(self):
-        with open('../page/search3.yaml', encoding='utf-8') as f:
-            steps = yaml.safe_load(f)
+    # 判断是否已添加自选，查询text属性是已添加的元素
+    def is_choose(self, func_name):
+        with open('../page/search.yaml', encoding='utf-8') as f:
+            steps = yaml.safe_load(f)[func_name]
             for step in steps:
                 if "by" in step.keys():
                     element = self.find_ele(step["by"], step["locator"])
@@ -65,9 +68,10 @@ class Search_Page(BasePage):
                         return len(elements)
         return self
 
-    def reset(self):
-        with open('../page/search4.yaml', encoding='utf-8') as f:
-            steps = yaml.safe_load(f)
+    # 如果已添加自选，恢复为未添加自选
+    def reset(self, func_name):
+        with open('../page/search.yaml', encoding='utf-8') as f:
+            steps = yaml.safe_load(f)[func_name]
             for step in steps:
                 if "by" in step.keys():
                     element = self.find_ele(step["by"], step["locator"])
