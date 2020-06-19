@@ -16,6 +16,7 @@ class BasePage:
     def __init__(self, driver: WebDriver = None):
         self._driver = driver
 
+    # 查找元素
     def find_ele(self, locator, value: str = None):
 
         try:
@@ -46,21 +47,26 @@ class BasePage:
                     return self.find_ele(locator, value)
             raise e
 
+    # 查找元素集
     def find_eles(self, by, locator):
         return self._driver.find_elements(by, locator)
 
+    # 滑动查找text属性是指定内容的元素
     def scroll_find(self, value):
         return self._driver.find_element_by_android_uiautomator(
             'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(' + '"' + value + '"' + ').instance(0));')
 
+    # 滑动查找text属性开头是指定内容的元素
     def scroll_find_start_text(self, value):
         return self._driver.find_element_by_android_uiautomator(
             f'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textStartsWith("{value}").instance(0));')
 
+    # 返回上一步
     def go_back(self):
         self._driver.back()
         return self
 
+    # 获取toast文本，并返回
     def get_toast(self, toast_text=''):
 
         if toast_text:
