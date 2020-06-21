@@ -1,3 +1,4 @@
-- by: xpath
-  locator: //android.widget.TabHost//*[@text='行情']
-  action: click
+goto_market:
+  - by: xpath
+    locator: //android.widget.TabHost//*[@text='行情']
+    action: click

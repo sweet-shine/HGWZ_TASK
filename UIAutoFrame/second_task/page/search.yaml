@@ -19,7 +19,6 @@ is_choose:
     "action": "len"
 
 reset:
-  - "bys": "xpath"
+  - "by": "xpath"
     "locator": "//*[contains(@resource-id,'ll_stock_item_container')]//*[@text='阿里巴巴']/../..//*[@text='已添加']"
-    "index": 0
     "action": "click"

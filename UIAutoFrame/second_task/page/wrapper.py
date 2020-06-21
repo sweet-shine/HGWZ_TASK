@@ -11,7 +11,7 @@ def handle_alert(func):
     def wrapper(*args, **kwargs):
         from UIAutoFrame.first_task.page.base import BasePage
         _black_list = [
-            (MobileBy.XPATH, "//*[@text='取消']"),
+            # (MobileBy.XPATH, "//*[@text='取消']"),
             (MobileBy.ID, 'com.xueqiu.android:id/ib_close'),
             (MobileBy.XPATH, '确定'),
             (MobileBy.XPATH, '确认'),
