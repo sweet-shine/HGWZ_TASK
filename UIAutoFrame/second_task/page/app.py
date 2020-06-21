@@ -12,7 +12,7 @@ class APP(BasePage):
             caps = {}
             caps["platformName"] = "Android"
             # caps["platformVersion"] = 10
-            caps["deviceName"] = "127.0.0.1:7555"
+            caps["deviceName"] = "2d3be0a5"
             caps["appPackage"] = "com.xueqiu.android"
             caps["appActivity"] = ".view.WelcomeActivityAlias"
             caps["automationName"] = "uiautomator2"

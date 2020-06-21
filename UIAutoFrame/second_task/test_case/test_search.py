@@ -12,8 +12,8 @@ class Test_Search:
         self.app.stop_app()
 
     def test_search(self):
-        self.search = self.app.goto_main().goto_market().goto_search().search()
-        if self.search.is_choose():
-            self.search.reset()
-        self.search.add()
-        assert self.search.is_choose()
+        self.search = self.app.goto_main().goto_market().goto_search().search("search")
+        if self.search.is_choose("is_choose"):
+            self.search.reset("reset")
+        self.search.add("add")
+        assert self.search.is_choose("is_choose")
