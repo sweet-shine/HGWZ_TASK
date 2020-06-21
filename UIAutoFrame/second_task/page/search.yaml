@@ -2,23 +2,23 @@ search:
   - "by": id
     "locator": com.xueqiu.android:id/search_input_text
     "action": send_keys
-    "value": 阿里巴巴
+    "value": ${stock_name}
 
   - "by": xpath
-    "locator": //androidx.recyclerview.widget.RecyclerView//*[@text='阿里巴巴']
+    "locator": //androidx.recyclerview.widget.RecyclerView//*[@text='${stock_name}']
     "action": click
 
 add:
   - "by": "xpath"
-    "locator": "//*[contains(@resource-id,'ll_stock_item_container')]//*[@text='阿里巴巴']/../..//*[@text='加自选']"
+    "locator": "//*[contains(@resource-id,'ll_stock_item_container')]//*[@text='${stock_name}']/../..//*[@text='加自选']"
     "action": "click"
 
 is_choose:
   - "bys": "xpath"
-    "locator": "//*[contains(@resource-id,'ll_stock_item_container')]//*[@text='阿里巴巴']/../..//*[@text='已添加']"
+    "locator": "//*[contains(@resource-id,'ll_stock_item_container')]//*[@text='${stock_name}']/../..//*[@text='已添加']"
     "action": "len"
 
 reset:
   - "by": "xpath"
-    "locator": "//*[contains(@resource-id,'ll_stock_item_container')]//*[@text='阿里巴巴']/../..//*[@text='已添加']"
+    "locator": "//*[contains(@resource-id,'ll_stock_item_container')]//*[@text='${stock_name}']/../..//*[@text='已添加']"
     "action": "click"

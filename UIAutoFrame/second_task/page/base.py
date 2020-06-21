@@ -1,4 +1,5 @@
 import inspect
+import json
 
 import yaml
 from appium.webdriver.common.mobileby import MobileBy
@@ -62,13 +63,18 @@ class BasePage:
         toast_frame = WebDriverWait(self._driver, 5, 0.01).until(lambda x: self._driver.find_element(*toast_loc))
         return toast_frame.text
 
-    def steps(self, yaml_path):
+    # 测试步骤yaml文件驱动
+    def steps(self, yaml_path='', stock_name=''):
         # 打开yaml文件
         with open(yaml_path, encoding='utf-8') as f:
             # 取调用steps()函数的函数名
             func_name = inspect.stack()[1].function
             # 取出函数对应的yaml文件的内容
             steps = yaml.safe_load(f)[func_name]
+            raw = json.dumps(steps)
+            if '${stock_name}' and '${stock_name}' in raw:
+                raw = raw.replace('${stock_name}', stock_name)
+            steps = json.loads(raw)
         # 对取出来的内容逐行判断
         for step in steps:
             if "by" in step.keys():
@@ -81,7 +87,8 @@ class BasePage:
                         element.send_keys(step["value"])
             elif "bys" in step.keys():
                 elements = self.find_eles(step["bys"], step["locator"])
-                if "action" in step.keys() and "click" in step.keys():
+                if "action" in step.keys() and "click" in step.values():
                     elements[step["index"]].click()
-                elif "action" in step.keys() and "len" in step.keys():
+                elif "action" in step.keys() and "len" in step.values():
+                    print(len(elements))
                     return len(elements)
